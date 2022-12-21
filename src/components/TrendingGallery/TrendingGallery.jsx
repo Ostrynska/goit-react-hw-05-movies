@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { getTrending } from '../../services/api';
+import * as API from '../../services/api';
 // import { FilmCard } from '../FilmCard/FilmCard';
 // import { Link } from 'react-router-dom';
 
@@ -14,10 +14,8 @@ export const TrendingGallery = () => {
 
   const renderTrending = async () => {
     try {
-      const { page, results } = await getTrending();
-      console.log(results);
+      const { results } = await API.getTrending();
       setTrending(results);
-      console.log(trending);
     } catch (error) {
       console.log(error);
     }
