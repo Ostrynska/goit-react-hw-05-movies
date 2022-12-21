@@ -1,35 +1,20 @@
-import { useState, useEffect } from 'react';
-import { getTrending } from '../../services/api';
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import * as API from '../../services/api';
 
-export const FilmCard = () => {
-  const [trending, setTrending] = useState([]);
-
-  useEffect(() => {
-    console.log('Mouting phase: same when componentDidMount runs');
-    renderFilmCard();
-  }, []);
-
-  const renderFilmCard = async () => {
-    try {
-      const { results } = await getTrending();
-      console.log(results);
-      setTrending(results);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
+export const MovieDetails = ({ movies }) => {
   return (
-    <div>
-      {trending.map(
+    <main>
+      <button type="button">Go back</button>
+      {/* {movies.map(
         ({
           title,
           id,
           poster_path,
           release_date,
-          vote_average,
+          popularity,
           overview,
-          genre_ids,
+          genres,
         }) => (
           <>
             <div>
@@ -40,28 +25,20 @@ export const FilmCard = () => {
               <h3>
                 {title} ({release_date})
               </h3>
-              <p>User Score: {vote_average}</p>
+              <p>User Score: {popularity}</p>
               <h4>Overview</h4>
               <p>{overview}</p>
               <h4>Genres</h4>
-              {genre_ids.map(({ name }) => (
+              {genres.map(({ name }) => (
                 <p>{name}</p>
               ))}
             </div>
-
             <div>
               <p>Additional Information</p>
             </div>
           </>
         )
-      )}
-
-      {/* <h1>Trending movies</h1> */}
-      {/* <ul>
-        {trending.map(({ title, id }) => (
-          <li key={id}>{title}</li>
-        ))}
-      </ul> */}
-    </div>
+      )} */}
+    </main>
   );
 };
