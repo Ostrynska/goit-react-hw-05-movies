@@ -62,7 +62,11 @@ export const getReviews = async movie_id => {
   }
 };
 
-console.log(getReviews('550'));
-console.log(getCast('550'));
-console.log(getSearch('cat'));
-console.log(getDetails('550'));
+// export const getMovieById = id => {
+//   return movies.find(movie => movie.id === id);
+// };
+
+// console.log(getReviews('550'));
+// console.log(getCast('550'));
+// console.log(getSearch('cat'));
+// console.log(getDetails('550'));
