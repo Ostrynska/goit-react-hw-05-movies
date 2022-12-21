@@ -1,11 +1,13 @@
 // import { useState, useEffect } from 'react';
-// import * as API from '../../services/api';
+import * as API from '../../services/api';
+import { MovieDetails } from '../../components/MovieDetails/MovieDetails';
 // import { Link, Outlet } from 'react-router-dom';
 
 export const Movies = () => {
+  const movies = API.getDetails();
   return (
     <main>
-      <h1>Movies</h1>
+      <MovieDetails movies={movies} />
     </main>
   );
 };
