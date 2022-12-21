@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import * as API from '../../services/api';
 
 export const Home = () => {
@@ -24,7 +25,7 @@ export const Home = () => {
       <ul>
         {trending.map(({ title, id }) => (
           <li key={id}>
-            <p>{title}</p>
+            <Link to={`movies/${id}`}>{title}</Link>
           </li>
         ))}
       </ul>
