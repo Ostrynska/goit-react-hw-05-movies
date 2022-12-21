@@ -11,7 +11,7 @@ axios.defaults.params = {
 export const getTrending = async () => {
   try {
     const { data } = await axios.get(`trending/movie/day`);
-    console.log('DATA trending: ', data);
+    // console.log('DATA trending: ', data);
     return data;
   } catch (error) {
     console.error('Smth went wrong');
@@ -33,7 +33,6 @@ export const getSearch = async query => {
 export const getDetails = async movie_id => {
   try {
     const { data } = await axios.get(`/movie/${movie_id}`);
-    console.log('DATA Details: ', data);
     return data;
   } catch (error) {
     console.error('Smth went wrong');
@@ -62,11 +61,7 @@ export const getReviews = async movie_id => {
   }
 };
 
-// export const getMovieById = id => {
-//   return movies.find(movie => movie.id === id);
-// };
-
 // console.log(getReviews('550'));
 // console.log(getCast('550'));
 // console.log(getSearch('cat'));
-// console.log(getDetails('550'));
+console.log(getDetails('550'));
