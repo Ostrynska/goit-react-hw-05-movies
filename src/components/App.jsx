@@ -4,7 +4,7 @@ import { Route, Routes } from 'react-router-dom';
 import { Container, Logo, Header, Link } from './App.styled';
 import { Home } from '../pages/Home/Home';
 import { Movies } from '../pages/Movies/Movies';
-import { MovieDetails } from '../components/MovieDetails/MovieDetails';
+import { MovieDetails } from '../pages/MovieDetails/MovieDetails';
 
 export const App = () => {
   return (
@@ -27,11 +27,11 @@ export const App = () => {
         </Header>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/movies" element={<Movies />}>
-            {/* <Route path="mission" element={<Mission />} />
+          <Route path="/movies" element={<Movies />} />
+          {/* <Route path="mission" element={<Mission />} />
             {/* <Route path="team" element={<Team />} /> */}
-            <Route path="/movies/:id" element={<MovieDetails />} />
-          </Route>
+          <Route path="/movies/:id" element={<MovieDetails />} />
+          {/* </Route> */}
           {/* <Route path="/products" element={<Products />} />
           <Route path="/products/:id" element={<ProductDetails />} /> */}
         </Routes>
