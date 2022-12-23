@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { MovieList } from '../../components/MovieList/MovieList';
 import * as API from '../../services/api';
 
 export const Home = () => {
-  //   const [page, setPage] = useState(1);
   const [trending, setTrending] = useState([]);
 
   useEffect(() => {
@@ -22,13 +22,7 @@ export const Home = () => {
   return (
     <main>
       <h1>Trending movies</h1>
-      <ul>
-        {trending.map(({ title, id }) => (
-          <li key={id}>
-            <Link to={`movies/${id}`}>{title}</Link>
-          </li>
-        ))}
-      </ul>
+      <MovieList movies={trending} />
     </main>
   );
 };
