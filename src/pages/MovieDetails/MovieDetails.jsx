@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { Link, Outlet } from 'react-router-dom';
 import * as API from '../../services/api';
 
 export const MovieDetails = () => {
@@ -23,9 +24,6 @@ export const MovieDetails = () => {
 
   const { title, poster_path, release_date, popularity, overview, genres } =
     details;
-  const genreName = genres.map(genres => genres.name);
-
-  console.log(details);
 
   return (
     <main>
@@ -42,9 +40,17 @@ export const MovieDetails = () => {
       <h4>Overview</h4>
       <p>{overview}</p>
       <h4>Genres</h4>
-      <p>{genreName.toString()}</p>
-      {/* <p>{genres.map(genre => genre.name)}</p> */}
-      <p>Additional Information</p>
+      <p>{genres && genres.map(genre => genre.name).join(', ')}</p>
+      <h4>Additional Information</h4>
+      <ul>
+        <li>
+          <Link to="cast">Cast</Link>
+        </li>
+        <li>
+          <Link to="reviews">Reviews</Link>
+        </li>
+      </ul>
+      <Outlet />
     </main>
   );
 };
