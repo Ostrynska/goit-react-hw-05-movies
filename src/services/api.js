@@ -11,7 +11,6 @@ axios.defaults.params = {
 export const getTrending = async () => {
   try {
     const { data } = await axios.get(`trending/movie/day`);
-    // console.log('DATA trending: ', data);
     return data;
   } catch (error) {
     console.error('Smth went wrong');
@@ -22,7 +21,6 @@ export const getTrending = async () => {
 export const getSearch = async query => {
   try {
     const { data } = await axios.get(`search/company?query=${query}`);
-    console.log('DATA search: ', data);
     return data;
   } catch (error) {
     console.error('Smth went wrong');
@@ -33,7 +31,6 @@ export const getSearch = async query => {
 export const getDetails = async id => {
   try {
     const { data } = await axios.get(`/movie/${id}`);
-    // console.log(data);
     return data;
   } catch (error) {
     console.error('Smth went wrong');
