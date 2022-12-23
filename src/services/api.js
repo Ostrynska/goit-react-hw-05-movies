@@ -33,6 +33,7 @@ export const getSearch = async query => {
 export const getDetails = async id => {
   try {
     const { data } = await axios.get(`/movie/${id}`);
+    // console.log(data);
     return data;
   } catch (error) {
     console.error('Smth went wrong');
@@ -43,7 +44,7 @@ export const getDetails = async id => {
 export const getCast = async movie_id => {
   try {
     const { data } = await axios.get(`/movie/${movie_id}/credits`);
-    console.log('DATA Cast: ', data);
+    // console.log('DATA Cast: ', data);
     return data;
   } catch (error) {
     console.error('Smth went wrong');
@@ -54,7 +55,7 @@ export const getCast = async movie_id => {
 export const getReviews = async movie_id => {
   try {
     const { data } = await axios.get(`/movie/${movie_id}/reviews`);
-    console.log('DATA Reviews: ', data);
+    // console.log('DATA Reviews: ', data);
     return data;
   } catch (error) {
     console.error('Smth went wrong');
