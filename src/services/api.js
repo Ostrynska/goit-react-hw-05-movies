@@ -30,9 +30,9 @@ export const getSearch = async query => {
 };
 
 // Details
-export const getDetails = async movie_id => {
+export const getDetails = async id => {
   try {
-    const { data } = await axios.get(`/movie/${movie_id}`);
+    const { data } = await axios.get(`/movie/${id}`);
     return data;
   } catch (error) {
     console.error('Smth went wrong');
