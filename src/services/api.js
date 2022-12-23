@@ -41,28 +41,21 @@ export const getDetails = async id => {
 };
 
 // Cast
-export const getCast = async movie_id => {
+export const getCast = async id => {
   try {
-    const { data } = await axios.get(`/movie/${movie_id}/credits`);
-    // console.log('DATA Cast: ', data);
-    return data;
+    const { data } = await axios.get(`/movie/${id}/credits`);
+    return data.cast;
   } catch (error) {
     console.error('Smth went wrong');
   }
 };
 
 // Reviews
-export const getReviews = async movie_id => {
+export const getReviews = async id => {
   try {
-    const { data } = await axios.get(`/movie/${movie_id}/reviews`);
-    // console.log('DATA Reviews: ', data);
-    return data;
+    const { data } = await axios.get(`/movie/${id}/reviews`);
+    return data.results;
   } catch (error) {
     console.error('Smth went wrong');
   }
 };
-
-// console.log(getReviews('550'));
-// console.log(getCast('550'));
-// console.log(getSearch('cat'));
-console.log(getDetails('550'));
