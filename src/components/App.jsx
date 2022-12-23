@@ -1,10 +1,11 @@
 import { Route, Routes } from 'react-router-dom';
-// import { SharedLayout } from './SharedLayout/SharedLayout';
-// import { Outlet } from 'react-router-dom';
 import { Container, Logo, Header, Link } from './App.styled';
 import { Home } from '../pages/Home/Home';
 import { Movies } from '../pages/Movies/Movies';
 import { MovieDetails } from '../pages/MovieDetails/MovieDetails';
+import { Cast } from '../components/Cast/Cast';
+import { Reviews } from '../components/Reviews/Reviews';
+import { NotFound } from '../components/NotFound';
 
 export const App = () => {
   return (
@@ -26,13 +27,12 @@ export const App = () => {
         </Header>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/movies" element={<Movies />} />
-          {/* <Route path="mission" element={<Mission />} />
-            {/* <Route path="team" element={<Team />} /> */}
-          <Route path="/movies/:id" element={<MovieDetails />} />
-          {/* </Route> */}
-          {/* <Route path="/products" element={<Products />} />
-          <Route path="/products/:id" element={<ProductDetails />} /> */}
+          <Route path="movies" element={<Movies />} />
+          <Route path="movies/:id" element={<MovieDetails />}>
+            <Route path="cast" element={<Cast />} />
+            <Route path="reviews" element={<Reviews />} />
+          </Route>
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </Container>
     </>
