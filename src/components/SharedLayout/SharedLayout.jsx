@@ -5,13 +5,18 @@ export const SharedLayout = () => {
   return (
     <Container>
       <Header>
-        <Logo>Find Your Movie</Logo>
         <nav>
           <Link to="/" end>
             Home
           </Link>
-          {/* <Link to="/movies">Movies</Link> */}
+          <Link to="/movies">Movies</Link>
         </nav>
+        <Logo>
+          <span role="img" aria-label="movie icon">
+            🎬
+          </span>{' '}
+          Movie Room
+        </Logo>
       </Header>
       <Outlet />
     </Container>
