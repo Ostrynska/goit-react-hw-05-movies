@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { Link, Outlet } from 'react-router-dom';
 import * as API from '../../services/api';
 
 export const MovieDetails = () => {
   const [details, setDetails] = useState([]);
   const { id } = useParams();
+  const navigate = useNavigate();
 
   useEffect(() => {
     renderMovieDetails();
@@ -22,12 +23,18 @@ export const MovieDetails = () => {
 
   if (!details) return;
 
+  const handleNavigate = async () => {
+    navigate('/', { replace: true });
+  };
+
   const { title, poster_path, release_date, popularity, overview, genres } =
     details;
 
   return (
     <main>
-      <button type="button">Go back</button>
+      <button type="button" onClick={handleNavigate}>
+        Go back
+      </button>
       <h3>
         {title} ({release_date})
       </h3>
