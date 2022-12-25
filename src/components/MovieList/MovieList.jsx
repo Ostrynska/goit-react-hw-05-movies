@@ -1,15 +1,22 @@
 import { Link } from 'react-router-dom';
-// import { StyledList } from './MovieList.styled';
+import { MovieListWrapp, MovieListItem } from '../MovieList/MovieList.styled';
 
 export const MovieList = ({ movies }) => {
-  //   const location = useLocation();
   return (
-    <ul>
-      {movies.map(({ title, id }) => (
-        <li key={id}>
-          <Link to={`movies/${id}`}>{title}</Link>
-        </li>
+    <MovieListWrapp>
+      {movies.map(({ title, id, poster_path }) => (
+        <MovieListItem key={id}>
+          <Link to={`movies/${id}`}>
+            <div>
+              <img
+                src={'https://image.tmdb.org/t/p/w200' + poster_path}
+                alt={title}
+              />
+              <p>{title}</p>
+            </div>
+          </Link>
+        </MovieListItem>
       ))}
-    </ul>
+    </MovieListWrapp>
   );
 };
