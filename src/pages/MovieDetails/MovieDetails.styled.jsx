@@ -58,7 +58,7 @@ export const MovieTitle = styled.h2`
 `;
 
 export const Text = styled.p`
-  font-size: 1.25rem;
+  font-size: 1.05rem;
   line-height: 1;
   margin-bottom: 1rem;
   ${'' /* color: #301934; */}
