@@ -2,22 +2,23 @@ import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 
 export const Container = styled.div`
+  max-width: 1660px;
+  margin: auto;
   max-width: 100%;
-  margin: 0 auto;
-  padding: 0 40px;
 `;
 
 export const Header = styled.header`
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 12px;
-  padding: 8px 0;
-  margin-bottom: 16px;
-  border-bottom: 1px solid black;
+  height: 100%;
+  padding: 0 2rem;
+  height: 4rem;
 
   > nav {
     display: flex;
+    gap: 15px;
   }
 `;
 
