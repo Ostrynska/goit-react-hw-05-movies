@@ -2,6 +2,15 @@ import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { Link, Outlet } from 'react-router-dom';
 import * as API from '../../services/api';
+import {
+  Button,
+  Main,
+  MovieCard,
+  MovieImage,
+  MovieInformation,
+  MovieTitle,
+  Text,
+} from '../MovieDetails/MovieDetails.styled';
 
 export const MovieDetails = () => {
   const [details, setDetails] = useState([]);
@@ -31,23 +40,26 @@ export const MovieDetails = () => {
     details;
 
   return (
-    <main>
-      <button type="button" onClick={handleNavigate}>
+    <Main>
+      <Button type="button" onClick={handleNavigate}>
         Go back
-      </button>
-      <h3>
-        {title} ({release_date})
-      </h3>
-
-      <img src={'https://image.tmdb.org/t/p/w500' + poster_path} alt={title} />
-      <h3>
-        {title} ({release_date})
-      </h3>
-      <p>User Score: {popularity}</p>
-      <h4>Overview</h4>
-      <p>{overview}</p>
-      <h4>Genres</h4>
-      <p>{genres && genres.map(genre => genre.name).join(', ')}</p>
+      </Button>
+      <MovieCard>
+        <MovieImage
+          src={'https://image.tmdb.org/t/p/w400' + poster_path}
+          alt={title}
+        />
+        <MovieInformation>
+          <MovieTitle>
+            {title} ({release_date.slice(0, 4)})
+          </MovieTitle>
+          <Text>User Score: {popularity}</Text>
+          <h4>Overview</h4>
+          <Text>{overview}</Text>
+          <h4>Genres</h4>
+          <Text>{genres && genres.map(genre => genre.name).join(', ')}</Text>
+        </MovieInformation>
+      </MovieCard>
       <h4>Additional Information</h4>
       <ul>
         <li>
@@ -58,6 +70,6 @@ export const MovieDetails = () => {
         </li>
       </ul>
       <Outlet />
-    </main>
+    </Main>
   );
 };
