@@ -38,6 +38,7 @@ export const MovieDetails = () => {
 
   const { title, poster_path, release_date, popularity, overview, genres } =
     details;
+  const releaseYear = (release_date || '').slice(0, 4);
 
   return (
     <Main>
@@ -51,9 +52,11 @@ export const MovieDetails = () => {
         />
         <MovieInformation>
           <MovieTitle>
-            {title} ({release_date.slice(0, 4)})
+            {title} ({releaseYear})
           </MovieTitle>
-          <Text>User Score: {popularity}</Text>
+          <Text>
+            User Score: <span>{popularity}</span>
+          </Text>
           <h4>Overview</h4>
           <Text>{overview}</Text>
           <h4>Genres</h4>
