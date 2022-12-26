@@ -1,12 +1,13 @@
 import { Route, Routes } from 'react-router-dom';
 
-import { SharedLayout } from '../components/SharedLayout/SharedLayout';
 import { Home } from '../pages/Home/Home';
 import { Movies } from '../pages/Movies/Movies';
 import { MovieDetails } from '../pages/MovieDetails/MovieDetails';
-import { Cast } from '../components/Cast/Cast';
-import { Reviews } from '../components/Reviews/Reviews';
-import { NotFound } from '../components/NotFound';
+
+import { SharedLayout } from './SharedLayout/SharedLayout';
+import { Cast } from './Cast/Cast';
+import { Reviews } from './Reviews/Reviews';
+import { NotFound } from './NotFound/NotFound';
 
 export const App = () => {
   return (
