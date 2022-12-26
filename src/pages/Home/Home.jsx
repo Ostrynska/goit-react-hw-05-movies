@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { MovieList } from '../../components/MovieList/MovieList';
+import { Main, SectionTitle } from '../Home/Home.styled';
 import * as API from '../../services/api';
 
 export const Home = () => {
@@ -20,9 +21,9 @@ export const Home = () => {
   };
 
   return (
-    <main>
-      <h1>Trending movies</h1>
+    <Main>
+      <SectionTitle>Trending movies</SectionTitle>
       <MovieList movies={trending} />
-    </main>
+    </Main>
   );
 };
