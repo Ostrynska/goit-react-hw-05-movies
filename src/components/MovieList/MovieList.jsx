@@ -1,19 +1,26 @@
 import { Link } from 'react-router-dom';
-import { MovieListWrapp, MovieListItem } from '../MovieList/MovieList.styled';
+import {
+  MovieListWrapp,
+  MovieListItem,
+  MoviePoster,
+  MovieTitle,
+} from '../MovieList/MovieList.styled';
+import defaultPosterImage from '../../images/poster.jpg';
 
 export const MovieList = ({ movies }) => {
+  const baseURL = 'https://image.tmdb.org/t/p/w200';
   return (
     <MovieListWrapp>
       {movies.map(({ title, id, poster_path }) => (
         <MovieListItem key={id}>
           <Link to={`movies/${id}`}>
-            <div>
-              <img
-                src={'https://image.tmdb.org/t/p/w200' + poster_path}
-                alt={title}
-              />
-              <p>{title}</p>
-            </div>
+            <MoviePoster
+              src={
+                poster_path ? `${baseURL}${poster_path}` : defaultPosterImage
+              }
+              alt={title}
+            />
+            <MovieTitle>{title}</MovieTitle>
           </Link>
         </MovieListItem>
       ))}
