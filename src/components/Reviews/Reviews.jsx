@@ -28,11 +28,7 @@ export const Reviews = () => {
   };
 
   if (!reviews) {
-    return (
-      <>
-        <p>There is no reviews yet</p>
-      </>
-    );
+    return <h2>There are yet no reviews for this movie</h2>;
   }
 
   return (
