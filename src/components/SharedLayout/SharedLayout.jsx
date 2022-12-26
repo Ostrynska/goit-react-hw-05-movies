@@ -14,8 +14,8 @@ export const SharedLayout = () => {
         <Logo>
           <span role="img" aria-label="movie icon">
             🎬
-          </span>{' '}
-          Movie Room
+          </span>
+          MOVIE ROOM
         </Logo>
       </Header>
       <Outlet />
