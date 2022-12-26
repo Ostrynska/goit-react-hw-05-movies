@@ -31,7 +31,9 @@ export const Cast = () => {
     }
   };
 
-  if (!cast || cast.length === 0) return;
+  if (!cast || cast.length === 0) {
+    return <h2>There are yet no cast information for this movie</h2>;
+  }
 
   return (
     <CastSection>
