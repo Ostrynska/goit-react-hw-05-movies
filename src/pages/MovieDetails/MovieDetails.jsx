@@ -9,13 +9,18 @@ import {
   MovieImage,
   MovieInformation,
   MovieTitle,
+  MovieSubTitle,
   Text,
+  TextAccent,
+  TextScore,
 } from '../MovieDetails/MovieDetails.styled';
+import defaultPosterImage from '../../images/poster.jpg';
 
 export const MovieDetails = () => {
   const [details, setDetails] = useState([]);
   const { id } = useParams();
   const navigate = useNavigate();
+  const baseURL = 'https://image.tmdb.org/t/p/w400';
 
   useEffect(() => {
     renderMovieDetails();
@@ -36,9 +41,10 @@ export const MovieDetails = () => {
     navigate('/', { replace: true });
   };
 
-  const { title, poster_path, release_date, popularity, overview, genres } =
+  const { title, poster_path, release_date, vote_average, overview, genres } =
     details;
   const releaseYear = (release_date || '').slice(0, 4);
+  const score = Math.round(vote_average * 10);
 
   return (
     <Main>
@@ -47,7 +53,7 @@ export const MovieDetails = () => {
       </Button>
       <MovieCard>
         <MovieImage
-          src={'https://image.tmdb.org/t/p/w400' + poster_path}
+          src={poster_path ? `${baseURL}${poster_path}` : defaultPosterImage}
           alt={title}
         />
         <MovieInformation>
@@ -55,23 +61,25 @@ export const MovieDetails = () => {
             {title} ({releaseYear})
           </MovieTitle>
           <Text>
-            User Score: <span>{popularity}</span>
+            <TextAccent>User Score</TextAccent>
+            <TextScore>{score}%</TextScore>
           </Text>
-          <h4>Overview</h4>
+          <MovieSubTitle>Overview</MovieSubTitle>
           <Text>{overview}</Text>
-          <h4>Genres</h4>
+          <MovieSubTitle>Genres</MovieSubTitle>
           <Text>{genres && genres.map(genre => genre.name).join(', ')}</Text>
+          <MovieSubTitle>Additional Information</MovieSubTitle>
+          <ul>
+            <li>
+              <Link to="cast">Cast</Link>
+            </li>
+            <li>
+              <Link to="reviews">Reviews</Link>
+            </li>
+          </ul>
         </MovieInformation>
       </MovieCard>
-      <h4>Additional Information</h4>
-      <ul>
-        <li>
-          <Link to="cast">Cast</Link>
-        </li>
-        <li>
-          <Link to="reviews">Reviews</Link>
-        </li>
-      </ul>
+
       <Outlet />
     </Main>
   );
