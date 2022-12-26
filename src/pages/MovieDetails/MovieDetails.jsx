@@ -13,6 +13,8 @@ import {
   Text,
   TextAccent,
   TextScore,
+  AdditionalList,
+  AdditionalItem,
 } from '../MovieDetails/MovieDetails.styled';
 import defaultPosterImage from '../../images/poster.jpg';
 
@@ -69,14 +71,14 @@ export const MovieDetails = () => {
           <MovieSubTitle>Genres</MovieSubTitle>
           <Text>{genres && genres.map(genre => genre.name).join(', ')}</Text>
           <MovieSubTitle>Additional Information</MovieSubTitle>
-          <ul>
-            <li>
+          <AdditionalList>
+            <AdditionalItem>
               <Link to="cast">Cast</Link>
-            </li>
-            <li>
+            </AdditionalItem>
+            <AdditionalItem>
               <Link to="reviews">Reviews</Link>
-            </li>
-          </ul>
+            </AdditionalItem>
+          </AdditionalList>
         </MovieInformation>
       </MovieCard>
 
