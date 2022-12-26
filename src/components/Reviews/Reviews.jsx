@@ -1,6 +1,13 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import * as API from '../../services/api';
+import {
+  ReviewsSection,
+  ReviewsListWrapp,
+  ReviewsListItem,
+  ReviewsAuthor,
+  Text,
+} from './Reviews.styled';
 
 export const Reviews = () => {
   const [reviews, setReviews] = useState([]);
@@ -29,18 +36,18 @@ export const Reviews = () => {
   }
 
   return (
-    <section>
-      <ul>
+    <ReviewsSection>
+      <ReviewsListWrapp>
         {reviews &&
           reviews.map(({ author, content, id }) => {
             return (
-              <li key={{ id }}>
-                <h5>Author: {author}</h5>
-                <p>{content}</p>
-              </li>
+              <ReviewsListItem key={{ id }}>
+                <ReviewsAuthor>Author: {author}</ReviewsAuthor>
+                <Text>{content}</Text>
+              </ReviewsListItem>
             );
           })}
-      </ul>
-    </section>
+      </ReviewsListWrapp>
+    </ReviewsSection>
   );
 };
