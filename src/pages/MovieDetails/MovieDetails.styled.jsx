@@ -33,33 +33,51 @@ export const Main = styled.main`
 export const MovieCard = styled.div`
   margin-top: 1rem;
   display: flex;
-  padding: 3rem;
+  padding: 3rem 15rem;
   flex-grow: 1;
   justify-content: center;
   box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
 `;
 
 export const MovieImage = styled.img`
-  margin-left: 10rem;
   border-radius: 10px;
+  width: 350px;
+  height: auto;
 `;
 
 export const MovieInformation = styled.div`
   display: block;
-  margin-left: 3rem;
+  margin-left: 3.5rem;
 `;
 
 export const MovieTitle = styled.h2`
-  font-size: 4rem;
+  font-size: 3.5rem;
   line-height: 1;
-  font-weight: 700;
   margin-bottom: 2rem;
+  color: #301934;
+`;
+
+export const MovieSubTitle = styled.h3`
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
   color: #301934;
 `;
 
 export const Text = styled.p`
   font-size: 1.05rem;
-  line-height: 1;
+  line-height: 1.5;
   margin-bottom: 1rem;
-  ${'' /* color: #301934; */}
+`;
+
+export const TextAccent = styled.span`
+  color: white;
+  background-color: #301934;
+  text-transform: uppercase;
+  padding: 0.3rem;
+  border-radius: 10px;
+`;
+
+export const TextScore = styled.span`
+  margin-left: 10px;
+  font-weight: 700;
 `;
