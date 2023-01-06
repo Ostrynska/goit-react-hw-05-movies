@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+
+import * as API from '../../services/api';
+
 import { MovieList } from '../../components/MovieList/MovieList';
 import { Main, SectionTitle } from '../Home/Home.styled';
-import * as API from '../../services/api';
 
 export const Home = () => {
   const [trending, setTrending] = useState([]);
@@ -23,7 +24,7 @@ export const Home = () => {
   return (
     <Main>
       <SectionTitle>Trending movies</SectionTitle>
-      <MovieList movies={trending} />
+      {trending && <MovieList movies={trending} />}
     </Main>
   );
 };
