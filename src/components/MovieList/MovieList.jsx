@@ -1,4 +1,5 @@
 import { useLocation } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import {
   MovieListWrapp,
@@ -29,4 +30,14 @@ export const MovieList = ({ movies }) => {
       ))}
     </MovieListWrapp>
   );
+};
+
+MovieList.propTypes = {
+  movies: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      title: PropTypes.string.isRequired,
+      poster_path: PropTypes.string.isRequired,
+    })
+  ).isRequired,
 };
