@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { toast } from 'react-hot-toast';
 
 export const API_KEY = 'd20de05767e33e4f2fb018551512ab87';
 axios.defaults.baseURL = 'https://api.themoviedb.org/3/';
@@ -13,7 +14,7 @@ export const getTrending = async () => {
     const { data } = await axios.get(`trending/movie/day`);
     return data;
   } catch (error) {
-    console.error('Smth went wrong');
+    toast.error('Something went wrong, please try again');
   }
 };
 
@@ -23,7 +24,7 @@ export const getSearch = async query => {
     const { data } = await axios.get(`search/movie?query=${query}`);
     return data;
   } catch (error) {
-    console.error('Smth went wrong');
+    toast.error('Something went wrong, please try again');
   }
 };
 
@@ -33,7 +34,7 @@ export const getDetails = async id => {
     const { data } = await axios.get(`/movie/${id}`);
     return data;
   } catch (error) {
-    console.error('Smth went wrong');
+    toast.error('Something went wrong, please try again');
   }
 };
 
@@ -43,7 +44,7 @@ export const getCast = async id => {
     const { data } = await axios.get(`/movie/${id}/credits`);
     return data.cast;
   } catch (error) {
-    console.error('Smth went wrong');
+    toast.error('Something went wrong, please try again');
   }
 };
 
@@ -53,6 +54,6 @@ export const getReviews = async id => {
     const { data } = await axios.get(`/movie/${id}/reviews`);
     return data.results;
   } catch (error) {
-    console.error('Smth went wrong');
+    toast.error('Something went wrong, please try again');
   }
 };
