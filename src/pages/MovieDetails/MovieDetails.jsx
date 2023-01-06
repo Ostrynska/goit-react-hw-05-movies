@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
-import { Link, Outlet } from 'react-router-dom';
+import { useLocation, useParams, Link, Outlet } from 'react-router-dom';
+
 import * as API from '../../services/api';
+
 import {
   Button,
   Main,
@@ -16,12 +17,13 @@ import {
   AdditionalList,
   AdditionalItem,
 } from '../MovieDetails/MovieDetails.styled';
+
 import defaultPosterImage from '../../images/poster.jpg';
 
 export const MovieDetails = () => {
   const [details, setDetails] = useState([]);
   const { id } = useParams();
-  const navigate = useNavigate();
+  const location = useLocation();
   const baseURL = 'https://image.tmdb.org/t/p/w400';
 
   useEffect(() => {
@@ -39,9 +41,7 @@ export const MovieDetails = () => {
 
   if (!details) return;
 
-  const handleNavigate = async () => {
-    navigate('/', { replace: true });
-  };
+  const from = location.state?.from ?? '/';
 
   const { title, poster_path, release_date, vote_average, overview, genres } =
     details;
@@ -50,7 +50,7 @@ export const MovieDetails = () => {
 
   return (
     <Main>
-      <Button type="button" onClick={handleNavigate}>
+      <Button type="button" to={from}>
         Go back
       </Button>
       <MovieCard>
@@ -73,10 +73,14 @@ export const MovieDetails = () => {
           <MovieSubTitle>Additional Information</MovieSubTitle>
           <AdditionalList>
             <AdditionalItem>
-              <Link to="cast">Cast</Link>
+              <Link to="cast" state={{ from }}>
+                Cast
+              </Link>
             </AdditionalItem>
             <AdditionalItem>
-              <Link to="reviews">Reviews</Link>
+              <Link to="reviews" state={{ from }}>
+                Reviews
+              </Link>
             </AdditionalItem>
           </AdditionalList>
         </MovieInformation>
