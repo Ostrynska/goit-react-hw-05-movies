@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const MovieListWrapp = styled.ul`
@@ -16,6 +17,8 @@ export const MovieListItem = styled.li`
     color: #301934;
   }
 `;
+
+export const MovieListLink = styled(Link)``;
 
 export const MovieTitle = styled.h2`
   text-transform: uppercase;
