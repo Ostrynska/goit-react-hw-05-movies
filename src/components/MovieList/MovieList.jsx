@@ -1,4 +1,5 @@
 import { useLocation } from 'react-router-dom';
+
 import PropTypes from 'prop-types';
 
 import {
@@ -13,6 +14,7 @@ import defaultPosterImage from '../../images/poster.jpg';
 export const MovieList = ({ movies }) => {
   const location = useLocation();
   const baseURL = 'https://image.tmdb.org/t/p/w200';
+
   return (
     <MovieListWrapp>
       {movies.map(({ title, id, poster_path }) => (
@@ -37,7 +39,7 @@ MovieList.propTypes = {
     PropTypes.shape({
       id: PropTypes.number.isRequired,
       title: PropTypes.string.isRequired,
-      poster_path: PropTypes.string.isRequired,
+      poster_path: PropTypes.string,
     })
-  ).isRequired,
+  ),
 };
