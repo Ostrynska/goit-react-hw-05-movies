@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+
 import PropTypes from 'prop-types';
+import { toast } from 'react-hot-toast';
 
 import * as API from '../../services/api';
 
@@ -23,15 +25,18 @@ export const Reviews = () => {
   const renderMovieReviews = async () => {
     try {
       const results = await API.getReviews(id);
-      console.log(results);
       setReviews(results);
     } catch (error) {
-      console.log(error);
+      toast.error('Something went wrong, please try again');
     }
   };
 
   if (!reviews) {
-    return <h2>There are yet no reviews for this movie</h2>;
+    return (
+      <ReviewsSection>
+        <h2>There are yet no reviews for this movie</h2>
+      </ReviewsSection>
+    );
   }
 
   return (
@@ -57,5 +62,5 @@ Reviews.propTypes = {
       author: PropTypes.string.isRequired,
       content: PropTypes.string.isRequired,
     })
-  ).isRequired,
+  ),
 };
