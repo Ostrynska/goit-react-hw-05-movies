@@ -30,17 +30,16 @@ const MovieDetails = () => {
   const baseURL = 'https://image.tmdb.org/t/p/w400';
 
   useEffect(() => {
+    const renderMovieDetails = async () => {
+      try {
+        const results = await API.getDetails(id);
+        setDetails(results);
+      } catch (error) {
+        toast.error('Something went wrong, please try again');
+      }
+    };
     renderMovieDetails();
-  }, []);
-
-  const renderMovieDetails = async () => {
-    try {
-      const results = await API.getDetails(id);
-      setDetails(results);
-    } catch (error) {
-      toast.error('Something went wrong, please try again');
-    }
-  };
+  }, [id]);
 
   if (!details) return;
 
