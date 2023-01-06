@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
-import { useLocation, useParams, Link, Outlet } from 'react-router-dom';
+import { useLocation, useParams, Outlet } from 'react-router-dom';
 
 import * as API from '../../services/api';
 
 import {
-  Button,
+  ButtonLink,
   Main,
   MovieCard,
   MovieImage,
@@ -16,14 +16,15 @@ import {
   TextScore,
   AdditionalList,
   AdditionalItem,
+  AdditionalItemLink,
 } from '../MovieDetails/MovieDetails.styled';
-
 import defaultPosterImage from '../../images/poster.jpg';
 
 export const MovieDetails = () => {
   const [details, setDetails] = useState([]);
   const { id } = useParams();
   const location = useLocation();
+  const from = location.state?.from ?? '/';
   const baseURL = 'https://image.tmdb.org/t/p/w400';
 
   useEffect(() => {
@@ -41,8 +42,6 @@ export const MovieDetails = () => {
 
   if (!details) return;
 
-  const from = location.state?.from ?? '/';
-
   const { title, poster_path, release_date, vote_average, overview, genres } =
     details;
   const releaseYear = (release_date || '').slice(0, 4);
@@ -50,9 +49,9 @@ export const MovieDetails = () => {
 
   return (
     <Main>
-      <Button type="button" to={from}>
+      <ButtonLink type="button" to={from}>
         Go back
-      </Button>
+      </ButtonLink>
       <MovieCard>
         <MovieImage
           src={poster_path ? `${baseURL}${poster_path}` : defaultPosterImage}
@@ -73,19 +72,18 @@ export const MovieDetails = () => {
           <MovieSubTitle>Additional Information</MovieSubTitle>
           <AdditionalList>
             <AdditionalItem>
-              <Link to="cast" state={{ from }}>
+              <AdditionalItemLink to="cast" state={{ from }}>
                 Cast
-              </Link>
+              </AdditionalItemLink>
             </AdditionalItem>
             <AdditionalItem>
-              <Link to="reviews" state={{ from }}>
+              <AdditionalItemLink to="reviews" state={{ from }}>
                 Reviews
-              </Link>
+              </AdditionalItemLink>
             </AdditionalItem>
           </AdditionalList>
         </MovieInformation>
       </MovieCard>
-
       <Outlet />
     </Main>
   );
