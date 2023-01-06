@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
+import { toast } from 'react-hot-toast';
+
 import * as API from '../../services/api';
 
 import { SearchBox } from '../../components/SearchBox/SearchBox';
@@ -32,7 +34,7 @@ export const Movies = () => {
         const { results } = await API.getSearch(movieSearch);
         setMovies(results);
       } catch (error) {
-        console.log(error);
+        toast.error('Something went wrong, please try again');
       }
     }
     renderMovie();
@@ -46,7 +48,7 @@ export const Movies = () => {
           onChange={handleChange}
           onSubmit={handleSubmit}
         />
-        {movies && <MovieList movies={movies} />}
+        <MovieList movies={movies} />
       </MoviesSection>
     </Main>
   );
