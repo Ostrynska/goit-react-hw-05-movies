@@ -1,6 +1,7 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
-export const Button = styled.button`
+export const ButtonLink = styled(Link)`
   padding: 0;
   border: none;
   font: inherit;
@@ -102,3 +103,5 @@ export const AdditionalItem = styled.li`
       0px 2px 2px rgb(0 0 0 / 12%);
   }
 `;
+
+export const AdditionalItemLink = styled(Link)``;
