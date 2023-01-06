@@ -14,7 +14,7 @@ import {
   Text,
 } from './Reviews.styled';
 
-export const Reviews = () => {
+const Reviews = () => {
   const [reviews, setReviews] = useState([]);
   const { id } = useParams();
 
@@ -44,7 +44,7 @@ export const Reviews = () => {
       <ReviewsListWrapp>
         {reviews.map(({ author, content, id }) => {
           return (
-            <ReviewsListItem key={{ id }}>
+            <ReviewsListItem key={id}>
               <ReviewsAuthor>Author: {author}</ReviewsAuthor>
               <Text>{content}</Text>
             </ReviewsListItem>
@@ -64,3 +64,5 @@ Reviews.propTypes = {
     })
   ),
 };
+
+export default Reviews;
