@@ -11,7 +11,7 @@ import {
 } from '../MovieList/MovieList.styled';
 import defaultPosterImage from '../../images/poster.jpg';
 
-export const MovieList = ({ movies }) => {
+const MovieList = ({ movies }) => {
   const location = useLocation();
   const baseURL = 'https://image.tmdb.org/t/p/w200';
 
@@ -43,3 +43,5 @@ MovieList.propTypes = {
     })
   ),
 };
+
+export default MovieList;
