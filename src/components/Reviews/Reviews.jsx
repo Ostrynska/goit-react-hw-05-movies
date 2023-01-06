@@ -31,7 +31,7 @@ export const Reviews = () => {
     }
   };
 
-  if (!reviews) {
+  if (!reviews || reviews.length === 0) {
     return (
       <ReviewsSection>
         <h2>There are yet no reviews for this movie</h2>
