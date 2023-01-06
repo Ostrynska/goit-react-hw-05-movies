@@ -24,17 +24,16 @@ const Cast = () => {
   const baseURL = 'https://image.tmdb.org/t/p/w200';
 
   useEffect(() => {
+    const renderMovieCast = async () => {
+      try {
+        const results = await API.getCast(id);
+        setCast(results);
+      } catch (error) {
+        toast.error('Something went wrong, please try again');
+      }
+    };
     renderMovieCast();
-  }, []);
-
-  const renderMovieCast = async () => {
-    try {
-      const results = await API.getCast(id);
-      setCast(results);
-    } catch (error) {
-      toast.error('Something went wrong, please try again');
-    }
-  };
+  }, [id]);
 
   if (!cast || cast.length === 0) {
     return (
