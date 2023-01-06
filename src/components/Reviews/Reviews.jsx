@@ -19,17 +19,16 @@ const Reviews = () => {
   const { id } = useParams();
 
   useEffect(() => {
+    const renderMovieReviews = async () => {
+      try {
+        const results = await API.getReviews(id);
+        setReviews(results);
+      } catch (error) {
+        toast.error('Something went wrong, please try again');
+      }
+    };
     renderMovieReviews();
-  }, []);
-
-  const renderMovieReviews = async () => {
-    try {
-      const results = await API.getReviews(id);
-      setReviews(results);
-    } catch (error) {
-      toast.error('Something went wrong, please try again');
-    }
-  };
+  }, [id]);
 
   if (!reviews || reviews.length === 0) {
     return (
