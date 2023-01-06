@@ -1,5 +1,8 @@
+import PropTypes from 'prop-types';
+
 import { IconContext } from 'react-icons';
 import { BsSearch } from 'react-icons/bs';
+
 import { SearchForm, SearchButton, SearchInput } from './SearchBox.styled';
 
 export const SearchBox = ({ value, onChange, onSubmit }) => {
@@ -21,4 +24,10 @@ export const SearchBox = ({ value, onChange, onSubmit }) => {
       </SearchButton>
     </SearchForm>
   );
+};
+
+SearchBox.propTypes = {
+  value: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
+  onSubmit: PropTypes.func.isRequired,
 };
