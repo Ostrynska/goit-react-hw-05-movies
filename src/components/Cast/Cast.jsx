@@ -18,7 +18,7 @@ import {
 } from '../Cast/Cast.styled';
 import defaultCastImage from '../../images/cast.jpg';
 
-export const Cast = () => {
+const Cast = () => {
   const [cast, setCast] = useState([]);
   const { id } = useParams();
   const baseURL = 'https://image.tmdb.org/t/p/w200';
@@ -49,7 +49,7 @@ export const Cast = () => {
       <CastListWrapp>
         {cast.map(({ profile_path, name, character, id }) => {
           return (
-            <CastListItem key={{ id }}>
+            <CastListItem key={id}>
               <CastImageWrapp>
                 <CastImage
                   src={
@@ -82,3 +82,5 @@ Cast.propTypes = {
     })
   ),
 };
+
+export default Cast;
