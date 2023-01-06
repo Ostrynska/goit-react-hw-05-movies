@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, Suspense } from 'react';
 import { useLocation, useParams, Outlet } from 'react-router-dom';
 
 import { toast } from 'react-hot-toast';
@@ -22,7 +22,7 @@ import {
 } from '../MovieDetails/MovieDetails.styled';
 import defaultPosterImage from '../../images/poster.jpg';
 
-export const MovieDetails = () => {
+const MovieDetails = () => {
   const [details, setDetails] = useState([]);
   const { id } = useParams();
   const location = useLocation();
@@ -86,7 +86,11 @@ export const MovieDetails = () => {
           </AdditionalList>
         </MovieInformation>
       </MovieCard>
-      <Outlet />
+      <Suspense fallback={<div>Loading...</div>}>
+        <Outlet />
+      </Suspense>
     </Main>
   );
 };
+
+export default MovieDetails;
