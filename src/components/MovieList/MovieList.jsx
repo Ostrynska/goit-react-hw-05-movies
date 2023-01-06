@@ -1,7 +1,9 @@
-import { useLocation, Link } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
+
 import {
   MovieListWrapp,
   MovieListItem,
+  MovieListLink,
   MoviePoster,
   MovieTitle,
 } from '../MovieList/MovieList.styled';
@@ -14,7 +16,7 @@ export const MovieList = ({ movies }) => {
     <MovieListWrapp>
       {movies.map(({ title, id, poster_path }) => (
         <MovieListItem key={id}>
-          <Link to={`movies/${id}`} state={{ from: location }}>
+          <MovieListLink to={`/movies/${id}`} state={{ from: location }}>
             <MoviePoster
               src={
                 poster_path ? `${baseURL}${poster_path}` : defaultPosterImage
@@ -22,7 +24,7 @@ export const MovieList = ({ movies }) => {
               alt={title}
             />
             <MovieTitle>{title}</MovieTitle>
-          </Link>
+          </MovieListLink>
         </MovieListItem>
       ))}
     </MovieListWrapp>
