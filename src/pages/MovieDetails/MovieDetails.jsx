@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useLocation, useParams, Outlet } from 'react-router-dom';
 
-import PropTypes from 'prop-types';
 import { toast } from 'react-hot-toast';
 
 import * as API from '../../services/api';
@@ -71,7 +70,7 @@ export const MovieDetails = () => {
           <MovieSubTitle>Overview</MovieSubTitle>
           <Text>{overview}</Text>
           <MovieSubTitle>Genres</MovieSubTitle>
-          <Text>{genres.map(genre => genre.name).join(', ')}</Text>
+          <Text>{genres && genres.map(genre => genre.name).join(', ')}</Text>
           <MovieSubTitle>Additional Information</MovieSubTitle>
           <AdditionalList>
             <AdditionalItem>
@@ -90,8 +89,4 @@ export const MovieDetails = () => {
       <Outlet />
     </Main>
   );
-};
-
-MovieDetails.propTypes = {
-  genres: PropTypes.arrayOf.isRequired,
 };
