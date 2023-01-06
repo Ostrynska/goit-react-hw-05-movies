@@ -1,16 +1,18 @@
 import { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { SearchBox } from '../../components/SearchBox/SearchBox';
-import { Main, MoviesSection } from './Movie.styled';
-import { MovieList } from '../../components/MovieList/MovieList';
+
 import * as API from '../../services/api';
+
+import { SearchBox } from '../../components/SearchBox/SearchBox';
+import { MovieList } from '../../components/MovieList/MovieList';
+import { Main, MoviesSection } from './Movie.styled';
 
 export const Movies = () => {
   const [movies, setMovies] = useState([]);
   const [query, setQuery] = useState('');
   const [searchParams, setSearchParams] = useSearchParams();
 
-  const movieSearch = searchParams.get('query');
+  const movieSearch = searchParams.get('query') ?? '';
 
   const handleChange = e => {
     setQuery(e.currentTarget.value.toLowerCase());
@@ -18,7 +20,6 @@ export const Movies = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
-
     setSearchParams({ query: query });
     setQuery('');
   };
@@ -37,7 +38,6 @@ export const Movies = () => {
     renderMovie();
   }, [movieSearch]);
 
-  console.log(movies);
   return (
     <Main>
       <MoviesSection>
