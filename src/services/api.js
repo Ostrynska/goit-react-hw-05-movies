@@ -20,7 +20,7 @@ export const getTrending = async () => {
 // Search
 export const getSearch = async query => {
   try {
-    const { data } = await axios.get(`search/company?query=${query}`);
+    const { data } = await axios.get(`search/movie?query=${query}`);
     return data;
   } catch (error) {
     console.error('Smth went wrong');
