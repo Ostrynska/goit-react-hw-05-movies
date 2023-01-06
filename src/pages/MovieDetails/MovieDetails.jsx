@@ -1,6 +1,9 @@
 import { useEffect, useState } from 'react';
 import { useLocation, useParams, Outlet } from 'react-router-dom';
 
+import PropTypes from 'prop-types';
+import { toast } from 'react-hot-toast';
+
 import * as API from '../../services/api';
 
 import {
@@ -36,7 +39,7 @@ export const MovieDetails = () => {
       const results = await API.getDetails(id);
       setDetails(results);
     } catch (error) {
-      console.log(error);
+      toast.error('Something went wrong, please try again');
     }
   };
 
@@ -68,7 +71,7 @@ export const MovieDetails = () => {
           <MovieSubTitle>Overview</MovieSubTitle>
           <Text>{overview}</Text>
           <MovieSubTitle>Genres</MovieSubTitle>
-          <Text>{genres && genres.map(genre => genre.name).join(', ')}</Text>
+          <Text>{genres.map(genre => genre.name).join(', ')}</Text>
           <MovieSubTitle>Additional Information</MovieSubTitle>
           <AdditionalList>
             <AdditionalItem>
@@ -87,4 +90,8 @@ export const MovieDetails = () => {
       <Outlet />
     </Main>
   );
+};
+
+MovieDetails.propTypes = {
+  genres: PropTypes.arrayOf.isRequired,
 };
