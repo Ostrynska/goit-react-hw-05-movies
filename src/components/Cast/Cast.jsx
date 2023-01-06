@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+
 import PropTypes from 'prop-types';
+import { toast } from 'react-hot-toast';
 
 import * as API from '../../services/api';
 
@@ -30,12 +32,16 @@ export const Cast = () => {
       const results = await API.getCast(id);
       setCast(results);
     } catch (error) {
-      console.log(error);
+      toast.error('Something went wrong, please try again');
     }
   };
 
   if (!cast || cast.length === 0) {
-    return <h2>There are yet no cast information for this movie</h2>;
+    return (
+      <CastSection>
+        <h2>There are yet no cast information for this movie</h2>
+      </CastSection>
+    );
   }
 
   return (
@@ -72,7 +78,7 @@ Cast.propTypes = {
       id: PropTypes.number.isRequired,
       name: PropTypes.string.isRequired,
       character: PropTypes.string.isRequired,
-      poster_path: PropTypes.string.isRequired,
+      poster_path: PropTypes.string,
     })
-  ).isRequired,
+  ),
 };
