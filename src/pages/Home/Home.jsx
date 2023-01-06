@@ -4,10 +4,10 @@ import { toast } from 'react-hot-toast';
 
 import * as API from '../../services/api';
 
-import { MovieList } from '../../components/MovieList/MovieList';
+import MovieList from '../../components/MovieList/MovieList';
 import { Main, SectionTitle } from '../Home/Home.styled';
 
-export const Home = () => {
+const Home = () => {
   const [trending, setTrending] = useState([]);
 
   useEffect(() => {
@@ -30,3 +30,5 @@ export const Home = () => {
     </Main>
   );
 };
+
+export default Home;
