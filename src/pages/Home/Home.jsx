@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
 
+import { toast } from 'react-hot-toast';
+
 import * as API from '../../services/api';
 
 import { MovieList } from '../../components/MovieList/MovieList';
@@ -17,14 +19,14 @@ export const Home = () => {
       const { results } = await API.getTrending();
       setTrending(results);
     } catch (error) {
-      console.log(error);
+      toast.error('Something went wrong, please try again');
     }
   };
 
   return (
     <Main>
       <SectionTitle>Trending movies</SectionTitle>
-      {trending && <MovieList movies={trending} />}
+      <MovieList movies={trending} />
     </Main>
   );
 };
