@@ -1,6 +1,6 @@
 import { Main, NotFoundTitle } from './NotFound.styled';
 
-export const NotFound = () => {
+const NotFound = () => {
   return (
     <Main>
       <NotFoundTitle>
@@ -9,3 +9,5 @@ export const NotFound = () => {
     </Main>
   );
 };
+
+export default NotFound;
