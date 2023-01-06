@@ -5,7 +5,7 @@ import { BsSearch } from 'react-icons/bs';
 
 import { SearchForm, SearchButton, SearchInput } from './SearchBox.styled';
 
-export const SearchBox = ({ value, onChange, onSubmit }) => {
+const SearchBox = ({ value, onChange, onSubmit }) => {
   return (
     <SearchForm onSubmit={onSubmit}>
       <SearchInput
@@ -31,3 +31,5 @@ SearchBox.propTypes = {
   onChange: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired,
 };
+
+export default SearchBox;
