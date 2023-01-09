@@ -6,6 +6,7 @@ import { toast } from 'react-hot-toast';
 import * as API from '../../services/api';
 
 import {
+  Loading,
   ButtonLink,
   Main,
   MovieCard,
@@ -85,7 +86,11 @@ const MovieDetails = () => {
           </AdditionalList>
         </MovieInformation>
       </MovieCard>
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense
+        color={'#301934'}
+        loading={true}
+        fallback={<Loading aria-label="Loading Spinner" data-testid="loader" />}
+      >
         <Outlet />
       </Suspense>
     </Main>
