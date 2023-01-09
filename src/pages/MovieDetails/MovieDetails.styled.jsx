@@ -106,7 +106,12 @@ export const AdditionalItem = styled.li`
   }
 `;
 
-export const AdditionalItemLink = styled(Link)``;
+export const AdditionalItemLink = styled(Link)`
+  color: black;
+  :hover {
+    font-weight: 700;
+  }
+`;
 
 export const Loading = styled(BeatLoader)`
   margin: 50vh;
