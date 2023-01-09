@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import BeatLoader from 'react-spinners/BeatLoader';
 
 export const ButtonLink = styled(Link)`
   padding: 0;
@@ -106,3 +107,12 @@ export const AdditionalItem = styled.li`
 `;
 
 export const AdditionalItemLink = styled(Link)``;
+
+export const Loading = styled(BeatLoader)`
+  margin: 50vh;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  size: 150px;
+`;
