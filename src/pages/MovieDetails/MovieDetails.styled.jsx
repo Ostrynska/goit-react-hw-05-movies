@@ -109,7 +109,8 @@ export const AdditionalItem = styled.li`
 export const AdditionalItemLink = styled(Link)`
   color: black;
   :hover {
-    font-weight: 700;
+    font-weight: 600;
+    color: #301934;
   }
 `;
 
