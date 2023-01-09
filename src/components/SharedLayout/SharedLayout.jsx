@@ -1,7 +1,7 @@
 import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
 
-import { Container, Logo, Header, Link } from './SharedLayout.styled';
+import { Container, Logo, Header, Link, Loading } from './SharedLayout.styled';
 
 const SharedLayout = () => {
   return (
@@ -20,7 +20,11 @@ const SharedLayout = () => {
           MOVIE ROOM
         </Logo>
       </Header>
-      <Suspense fallback={<div>Loading page...</div>}>
+      <Suspense
+        color={'#301934'}
+        loading={true}
+        fallback={<Loading aria-label="Loading Spinner" data-testid="loader" />}
+      >
         <Outlet />
       </Suspense>
     </Container>
