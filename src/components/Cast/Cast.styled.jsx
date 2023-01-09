@@ -38,6 +38,7 @@ export const TextWrapp = styled.div`
 export const Text = styled.p`
   max-width: 160px;
   font-size: 12px;
+  color: inherit;
 `;
 
 export const TextAccent = styled.span`
