@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
+import BeatLoader from 'react-spinners/BeatLoader';
 
 export const Container = styled.div`
   max-width: 1660px;
@@ -39,4 +40,13 @@ export const Link = styled(NavLink)`
     font-weight: 700;
     background-color: #301934;
   }
+`;
+
+export const Loading = styled(BeatLoader)`
+  margin: 50vh;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  size: 150px;
 `;
